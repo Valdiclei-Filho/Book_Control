@@ -153,6 +153,9 @@ header {
   border-bottom-left-radius: 10px;
   border: none;
   outline: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
 }
 
 #searchBook::placeholder {

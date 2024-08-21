@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('loggedInUser')) {
+        window.location.href = '/homepage/index.html'
         loadHomePageBooks();
     } else {
          window.location.href = '/Login/login.html'
@@ -70,8 +71,6 @@ function loadHomePageBooks() {
     books.forEach((book, index) => {
         createBookElement(book, index);
     });
-
-    document.getElementById('logoutButton').style.display = 'block';
 }
 
 function loadUserBooks() {

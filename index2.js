@@ -1,89 +1,12 @@
-document.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem('loggedInUser')) {
-        loadHomePageBooks();
-    } else {
-         window.location.href = '/Login/login.html'
-    }
-});
+document.addEventListener('DOMContentLoaded', loadBooks);
 
-function registerUser() {
-    const username = document.getElementById('registerUsername').value.trim();
-    const password = document.getElementById('registerPassword').value.trim();
-
-    if (username === '' || password === '') return;
-
-    let users = getUsersFromLocalStorage();
-
-    if (users.find(user => user.username === username)) {
-        alert('Username já existe. Por favor, escolha outro.');
-        return;
-    }
-
-    const newUser = {
-        id: users.length + 1,
-        username: username,
-        password: password
-    };
-
-    users.push(newUser);
-    saveUsersToLocalStorage(users);
-
-    alert('Cadastro realizado com sucesso! Agora você pode fazer login.');
-    clearLoginInputs();
-}
-
-function loginUser() {
-    const username = document.getElementById('loginUsername').value.trim();
-    const password = document.getElementById('loginPassword').value.trim();
-
-    let users = getUsersFromLocalStorage();
-
-    const user = users.find(user => user.username === username && user.password === password);
-
-    if (user) {
-        localStorage.setItem('loggedInUser', JSON.stringify(user));
-        window.location.href = '/homepage/index.html';
-    } else {
-        alert('Usuário ou senha incorretos.');
-    }
-}
-
-function logoutUser() {
-    localStorage.removeItem('loggedInUser');
-    window.location.href = '/homepage/index.html';
-}
-
-function getUsersFromLocalStorage() {
-    const users = localStorage.getItem('users');
-    return users ? JSON.parse(users) : [];
-}
-
-function saveUsersToLocalStorage(users) {
-    localStorage.setItem('users', JSON.stringify(users));
-}
-
-function loadHomePageBooks() {
-    const books = getBooksFromLocalStorage();
+function loadBooks() {
     const bookList = document.getElementById('bookList');
     bookList.innerHTML = '';
 
+    const books = getBooksFromLocalStorage();
+    
     books.forEach((book, index) => {
-        createBookElement(book, index);
-    });
-
-    document.getElementById('logoutButton').style.display = 'block';
-}
-
-function loadUserBooks() {
-    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-    const books = getBooksFromLocalStorage();
-
-    const userBooks = books.filter(book => book.userId === loggedInUser.id);
-
-    const bookList = document.getElementById('bookList');
-    bookList.innerHTML = '';
-
-    userBooks.forEach((book, index) => {
         createBookElement(book, index);
     });
 }
@@ -95,47 +18,6 @@ function getBooksFromLocalStorage() {
 
 function saveBooksToLocalStorage(books) {
     localStorage.setItem('books', JSON.stringify(books));
-}
-
-function addBook() {
-    const titulo = document.getElementById('titulo').value.trim();
-    const autor = document.getElementById('autor').value.trim();
-    const imagem = document.getElementById('imagem').value.trim();
-    const idioma = document.getElementById('idioma').value.trim();
-    const isbn = document.getElementById('isbn').value.trim();
-    const editora = document.getElementById('editora').value.trim();
-    const contato = document.getElementById('contato').value.trim();
-
-    if (titulo === '' || autor === '' || imagem === '') return;
-
-    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-    const books = getBooksFromLocalStorage();
-
-    const newBook = {
-        id: books.length + 1,
-        userId: loggedInUser.id,
-        imagem: imagem,
-        titulo: titulo,
-        autor: autor,
-        idioma: idioma,
-        isbn: isbn,
-        editora: editora,
-        contato: contato
-    };
-
-    books.push(newBook);
-    
-    saveBooksToLocalStorage(books);
-    createBookElement(newBook, books.length - 1);
-
-    clearInputs();
-}
-
-function clearLoginInputs() {
-    document.getElementById('registerUsername').value = '';
-    document.getElementById('registerPassword').value = '';
-    document.getElementById('loginUsername').value = '';
-    document.getElementById('loginPassword').value = '';
 }
 
 function createBookElement(book, index) {
@@ -151,6 +33,36 @@ function createBookElement(book, index) {
     `;
     
     bookList.appendChild(bookItem);
+}
+
+function addBook() {
+    const titulo = document.getElementById('titulo').value.trim();
+    const autor = document.getElementById('autor').value.trim();
+    const imagem = document.getElementById('imagem').value.trim();
+    const idioma = document.getElementById('idioma').value.trim();
+    const isbn = document.getElementById('isbn').value.trim();
+    const editora = document.getElementById('editora').value.trim();
+    const contato = document.getElementById('contato').value.trim();
+
+    if (titulo === '' || autor === '' || imagem === '') return;
+
+    const books = getBooksFromLocalStorage();
+    const newBook = {
+        id: books.length + 1,
+        imagem: imagem,
+        titulo: titulo,
+        autor: autor,
+        idioma: idioma,
+        isbn: isbn,
+        editora: editora,
+        contato: contato
+    };
+    books.push(newBook);
+    
+    saveBooksToLocalStorage(books);
+    createBookElement(newBook, books.length - 1);
+
+    clearInputs();
 }
 
 function editBook(index) {
@@ -175,14 +87,14 @@ function editBook(index) {
 
     books[index] = book;
     saveBooksToLocalStorage(books);
-    loadHomePageBooks();
+    loadBooks();
 }
 
 function deleteBook(index) {
     const books = getBooksFromLocalStorage();
     books.splice(index, 1);
     saveBooksToLocalStorage(books);
-    loadHomePageBooks();
+    loadBooks();
 }
 
 function clearInputs() {

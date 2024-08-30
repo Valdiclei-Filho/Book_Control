@@ -168,7 +168,7 @@ function createBookElement(book, index) {
   const bookItem = document.createElement("div");
   
   const currentPage = window.location.pathname.split("/").pop();
-  const hoverMessage = currentPage === "/Book_Control/Meus%20Livros/meusLivros.html" 
+  const hoverMessage = currentPage === "Book_Control/Meus%20Livros/meusLivros.html" 
                         ? `<div class="hover-message">Clique na imagem para editar ou excluir</div>` 
                         : '';
 
@@ -192,7 +192,7 @@ function createBookElement(book, index) {
   gridBooks.appendChild(bookItem);
 
   // Adiciona os eventos de hover para mostrar a mensagem, apenas na página 'meusLivros'
-  if (currentPage === "/Book_Control/Meus%20Livros/meusLivros.html") {
+  if (currentPage === "Book_Control/Meus%20Livros/meusLivros.html") {
     const imageContainer = bookItem.querySelector('.image-container');
     imageContainer.addEventListener('mouseenter', () => {
       const hoverMsg = imageContainer.querySelector('.hover-message');

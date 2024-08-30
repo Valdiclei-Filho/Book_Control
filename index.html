@@ -19,14 +19,14 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <link rel="stylesheet" href="index.css" />
-    <script src="index.js"></script>
+    <script src="/indexReal.js" defer></script>
     <title>BookControl</title>
   </head>
   <body>
     <header>
       <div class="containerHeader">
-        <h1 id="tituloHeader">BookControl</h1>
-        <a id="buttonLogin">login</a>
+        <a href="index.html"><h1 id="tituloHeader">BookControl</h1></a>
+        <a id="buttonLogin" href="/Login/login.html">login</a>
       </div>
     </header>
     <main>
@@ -38,8 +38,8 @@
           </h3>
         </div>
         <div id="buttonsSectionOne">
-          <a class="buttonSectionOne" href="">Saiba mais</a>
-          <a class="buttonSectionOne" href="">Cadastre-se</a>
+          <a class="buttonSectionOne" href="#sectionThree">Saiba mais</a>
+          <a class="buttonSectionOne" href="/Login/login.html">Cadastre-se</a>
         </div>
         <div id="searchBooks">
           <input
@@ -48,7 +48,7 @@
             id="searchBook"
             placeholder="Buscar livros"
           />
-          <button id="buttonSearch" type="submit">
+          <button onclick="searchBooks()" id="buttonSearch" type="submit">
             <i class="fa fa-search" style="color: white"></i>
           </button>
         </div>
@@ -91,7 +91,7 @@
             </div>
           </div>
           <div class="cadastrese">
-            <a href="caminhoCadastro">Cadastre-se</a>
+            <a href="/Login/login.html">Cadastre-se</a>
           </div>
         </div>
         <hr />
@@ -111,7 +111,7 @@
             <h3>Organize seus livros</h3>
           </div>
           <div class="cadastrese">
-            <a href="caminhoCadastro">COMECE AGORA MESMO</a>
+            <a href="/Login/login.html">COMECE AGORA MESMO</a>
           </div>
         </div>
       </section>
@@ -119,13 +119,13 @@
     <footer>
       <h2>BookControl</h2>
       <div id="redeSocial">
-        <a href="https://www.linkedin.com" target="_blank"
+        <a href="https://www.linkedin.com/in/valdiclei-filho/" target="_blank"
           ><i class="fa-brands fa-linkedin fa-5x" tyle="color: #ffffff"></i
         ></a>
-        <a href="https://www.instagram.com" target="_blank"
+        <a href="https://www.instagram.com/vald_hope/?__d=11" target="_blank"
           ><i class="fa-brands fa-instagram fa-5x" style="color: #ffffff"></i
         ></a>
-        <a href="https://www.github.com" target="_blank"
+        <a href="https://github.com/Valdiclei-Filho" target="_blank"
           ><i class="fa-brands fa-github fa-5x" style="color: #ffffff"></i
         ></a>
       </div>

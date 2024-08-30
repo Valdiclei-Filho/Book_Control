@@ -3,12 +3,21 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 header {
   display: flex;
   width: 100%;
   justify-content: center;
   align-items: center;
   background-color: rgba(67, 165, 255, 1);
+}
+
+
+header > div > a{
+  text-decoration: none;
 }
 
 .containerHeader {
@@ -153,6 +162,9 @@ header {
   border-bottom-left-radius: 10px;
   border: none;
   outline: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
 }
 
 #searchBook::placeholder {
@@ -214,7 +226,7 @@ header {
 }
 
 #sectionTwo > h2{
-  margin: 1% 10% 1%;
+  margin-left: 8.2%;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 30px;

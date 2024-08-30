@@ -19,14 +19,14 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <link rel="stylesheet" href="login.css" />
-    <script src="login.js"></script>
-    <title>Document</title>
+    <script src="/indexReal.js" defer></script>
+    <title>BookControl</title>
   </head>
   <body>
     <header>
       <div class="containerHeader">
-        <a href="/homepage/index.html"><h1 id="tituloHeader">BookControl</h1></a>
-        <a id="buttonLogin">login</a>
+        <a href="/AllLivros/allLivros.html"><h1 id="tituloHeader">BookControl</h1></a>
+        <a href="/Login/login.html" id="buttonLogin">login</a>
       </div>
     </header>
     <main>
@@ -45,6 +45,7 @@
                 type="text"
                 name="searchEmail"
                 class="searchEmail"
+                id="loginUsername"
                 placeholder="E-mail"
               />
               <button class="buttonIcon" type="submit">
@@ -56,13 +57,14 @@
                 type="text"
                 name="searchBook"
                 class="searchSenha"
+                id="loginPassword"
                 placeholder="Senha"
               />
               <button class="buttonIcon" type="submit">
                 <i class="fa-solid fa-lock" style="color: #ffffff"></i>
               </button>
             </div>
-            <button class="buttonsSubmit" type="submit">ENTRAR</button>
+            <button onclick="loginUser()" class="buttonsSubmit" type="submit">ENTRAR</button>
           </div>
         </div>
         <div class="containerLoginCadastro">
@@ -78,6 +80,7 @@
                 type="text"
                 name="searchEmail"
                 class="searchEmail"
+                id="registerUsername"
                 placeholder="E-mail"
               />
               <button class="buttonIcon" type="submit">
@@ -89,13 +92,14 @@
                 type="text"
                 name="searchSenha"
                 class="searchSenha"
+                id="registerPassword"
                 placeholder="Senha"
               />
               <button class="buttonIcon" type="submit">
                 <i class="fa-solid fa-lock" style="color: #ffffff"></i>
               </button>
             </div>
-            <button class="buttonsSubmit" type="submit">CADASTRAR</button>
+            <button onclick="registerUser()" class="buttonsSubmit" type="submit">CADASTRAR</button>
           </div>
         </div>
       </div>
@@ -103,13 +107,13 @@
     <footer>
       <h2>BookControl</h2>
       <div id="redeSocial">
-        <a href="https://www.linkedin.com" target="_blank"
+        <a href="https://www.linkedin.com/in/valdiclei-filho/" target="_blank"
           ><i class="fa-brands fa-linkedin fa-5x" tyle="color: #ffffff"></i
         ></a>
-        <a href="https://www.instagram.com" target="_blank"
+        <a href="https://www.instagram.com/vald_hope/?__d=11" target="_blank"
           ><i class="fa-brands fa-instagram fa-5x" style="color: #ffffff"></i
         ></a>
-        <a href="https://www.github.com" target="_blank"
+        <a href="https://github.com/Valdiclei-Filho" target="_blank"
           ><i class="fa-brands fa-github fa-5x" style="color: #ffffff"></i
         ></a>
       </div>

@@ -175,7 +175,7 @@ function createBookElement(book, index) {
   bookItem.innerHTML = `
     <div id="containerBook">
       <div class="image-container">
-        <img class="imageLivro" href="/Book_Control/Cadastro%20Livros/cadastroLivro.html" onclick="viewBookDetails(${book.id})" src="${book.imagem}" alt="${book.titulo}">
+        <img class="imageLivro" href="/Book_Control/Cadastro Livros/cadastroLivro.html" onclick="viewBookDetails(${book.id})" src="${book.imagem}" alt="${book.titulo}">
         ${hoverMessage}
       </div>
       <div class="tituloAutor">

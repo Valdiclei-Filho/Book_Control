@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     loadHomePageBooks();
     loginButton.textContent = "login";
-    loginButton.setAttribute("href", "/Login/login.html");
+    loginButton.setAttribute("href", "/Book_Control/Login/login.html");
   }
 });
 
@@ -21,7 +21,7 @@ function loadHomePageBooks() {
 
   let booksToDisplay = books;
 
-  if (currentPage === "meusLivros.html" && loggedInUser) {
+  if (currentPage === "/Book_Control/Meus%20Livros/meusLivros.html" && loggedInUser) {
     // Filtra os livros para exibir apenas os do usuário logado
     booksToDisplay = books.filter((book) => book.userId === loggedInUser.id);
   }
@@ -70,7 +70,7 @@ function loginUser() {
 
   if (user) {
     localStorage.setItem("loggedInUser", JSON.stringify(user));
-    window.location.href = "/AllLivros/allLivros.html";
+    window.location.href = "/Book_Control/AllLivros/allLivros.html";
   } else {
     alert("Usuário ou senha incorretos.");
   }
@@ -78,14 +78,14 @@ function loginUser() {
 
 function logoutUser(logout) {
   localStorage.removeItem("loggedInUser");
-  logout.href = "index.html";
+  logout.href = "/Book_Control/index.html";
 }
 
 function updateLoginButtonToLogout() {
   const loginButton = document.getElementById("buttonLogin");
   const logout = document.getElementById("logout");
   loginButton.textContent = "user";
-  loginButton.href = "/Perfil/perfil.html";
+  loginButton.href = "/Book_Control/Perfil/perfil.html";
 }
 
 function addBook() {
@@ -140,7 +140,7 @@ function addBook() {
 
   // Limpa o selectedBookId do localStorage após a edição ou adição
   localStorage.removeItem("selectedBookId");
-  window.location.href = "/Meus Livros/meusLivros.html";
+  window.location.href = "/Book_Control/Meus%20Livros/meusLivros.html";
 }
 
 // Funções de manipulação de dados
@@ -168,14 +168,14 @@ function createBookElement(book, index) {
   const bookItem = document.createElement("div");
   
   const currentPage = window.location.pathname.split("/").pop();
-  const hoverMessage = currentPage === "meusLivros.html" 
+  const hoverMessage = currentPage === "/Book_Control/Meus%20Livros/meusLivros.html" 
                         ? `<div class="hover-message">Clique na imagem para editar ou excluir</div>` 
                         : '';
 
   bookItem.innerHTML = `
     <div id="containerBook">
       <div class="image-container">
-        <img class="imageLivro" href="/Cadastro Livro/cadastroLivro.html" onclick="viewBookDetails(${book.id})" src="${book.imagem}" alt="${book.titulo}">
+        <img class="imageLivro" href="/Book_Control/Cadastro%20Livros/cadastroLivro.html" onclick="viewBookDetails(${book.id})" src="${book.imagem}" alt="${book.titulo}">
         ${hoverMessage}
       </div>
       <div class="tituloAutor">
@@ -192,7 +192,7 @@ function createBookElement(book, index) {
   gridBooks.appendChild(bookItem);
 
   // Adiciona os eventos de hover para mostrar a mensagem, apenas na página 'meusLivros'
-  if (currentPage === "meusLivros.html") {
+  if (currentPage === "/Book_Control/Meus%20Livros/meusLivros.html") {
     const imageContainer = bookItem.querySelector('.image-container');
     imageContainer.addEventListener('mouseenter', () => {
       const hoverMsg = imageContainer.querySelector('.hover-message');
@@ -208,21 +208,21 @@ function createBookElement(book, index) {
 function handleBookClick(bookId) {
   const currentPage = window.location.pathname;
 
-  if (currentPage.includes("allLivros.html")) {
+  if (currentPage.includes("/Book_Control/AllLivros/allLivros.html")) {
     viewBookDetails(bookId);
-  } else if (currentPage.includes("meusLivros.html")) {
+  } else if (currentPage.includes("/Book_Control/Meus%20Livros/meusLivros.html")) {
     editBookDetails(bookId);
   }
 }
 
 function viewBookDetails(bookId) {
   localStorage.setItem("selectedBookId", bookId);
-  window.location.href = "/DetalheLivro/detalheLivro.html";
+  window.location.href = "/Book_Control/DetalheLivro/detalheLivro.html";
 }
 
 function editBookDetails(bookId) {
   localStorage.setItem("selectedBookId", bookId);
-  window.location.href = "/Cadastro Livros/cadastroLivro.html";
+  window.location.href = "/Book_Control/Cadastro%20Livros/cadastroLivro.html";
 }
 
 function deleteBook(bookId) {
@@ -236,7 +236,7 @@ function deleteBook(bookId) {
 
   saveBooksToLocalStorage(updatedBooks);
   alert("Livro excluído com sucesso.");
-  window.location.href = "/AllLivros/allLivros.html";
+  window.location.href = "/Book_Control/AllLivros/allLivros.html";
 }
 
 function clearInputs() {

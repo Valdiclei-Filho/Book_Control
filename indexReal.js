@@ -21,7 +21,7 @@ function loadHomePageBooks() {
 
   let booksToDisplay = books;
 
-  if (currentPage === "/Book_Control/Meus%20Livros/meusLivros.html" && loggedInUser) {
+  if (currentPage === "Book_Control/Meus%20Livros/meusLivros.html" && loggedInUser) {
     // Filtra os livros para exibir apenas os do usuário logado
     booksToDisplay = books.filter((book) => book.userId === loggedInUser.id);
   }

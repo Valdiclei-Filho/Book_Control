@@ -168,7 +168,7 @@ function createBookElement(book, index) {
   const bookItem = document.createElement("div");
   
   const currentPage = window.location.pathname.split("/").pop();
-  const hoverMessage = currentPage === "Book_Control/Meus%20Livros/meusLivros.html" 
+  const hoverMessage = currentPage === "meusLivros.html" 
                         ? `<div class="hover-message">Clique na imagem para editar ou excluir</div>` 
                         : '';
 

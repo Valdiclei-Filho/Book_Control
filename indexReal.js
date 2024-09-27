@@ -16,13 +16,11 @@ function loadHomePageBooks() {
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
   const books = getBooksFromLocalStorage();
 
-  // Verifica se a página atual é 'meusLivros.html'
   const currentPage = window.location.pathname.split("/").pop();
 
   let booksToDisplay = books;
 
   if (currentPage === "meusLivros.html" && loggedInUser) {
-    // Filtra os livros para exibir apenas os do usuário logado
     booksToDisplay = books.filter((book) => book.userId === loggedInUser.id);
   }
 
@@ -31,7 +29,6 @@ function loadHomePageBooks() {
   });
 }
 
-// Funções principais de gerenciamento de usuários e livros
 function registerUser() {
   const username = document.getElementById("registerUsername").value.trim();
   const password = document.getElementById("registerPassword").value.trim();
@@ -138,12 +135,10 @@ function addBook() {
   saveBooksToLocalStorage(books);
   clearInputs();
 
-  // Limpa o selectedBookId do localStorage após a edição ou adição
   localStorage.removeItem("selectedBookId");
   window.location.href = "/Book_Control/Meus%20Livros/meusLivros.html";
 }
 
-// Funções de manipulação de dados
 function getUsersFromLocalStorage() {
   const users = localStorage.getItem("users");
   return users ? JSON.parse(users) : [];
@@ -162,7 +157,6 @@ function saveBooksToLocalStorage(books) {
   localStorage.setItem("books", JSON.stringify(books));
 }
 
-// Funções de manipulação da interface
 function createBookElement(book, index) {
   const gridBooks = document.querySelector(".gridBooks");
   const bookItem = document.createElement("div");
@@ -191,7 +185,6 @@ function createBookElement(book, index) {
 
   gridBooks.appendChild(bookItem);
 
-  // Adiciona os eventos de hover para mostrar a mensagem, apenas na página 'meusLivros'
   if (currentPage === "Book_Control/Meus%20Livros/meusLivros.html") {
     const imageContainer = bookItem.querySelector('.image-container');
     imageContainer.addEventListener('mouseenter', () => {
@@ -276,7 +269,6 @@ function loadBookForEdit() {
     const book = books.find((b) => b.id === parseInt(selectedBookId));
 
     if (book) {
-      // Preenche os campos do formulário com as informações do livro
       document.getElementById("imagem").value = book.imagem;
       document.getElementById("titulo").value = book.titulo;
       document.getElementById("autor").value = book.autor;
@@ -294,4 +286,3 @@ function getBookIdForDeletion() {
   const selectedBookId = localStorage.getItem("selectedBookId");
   return selectedBookId ? parseInt(selectedBookId) : null;
 }
-// Código que deve ser executado após o carregamento da página
